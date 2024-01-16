@@ -1,8 +1,20 @@
+import { useState } from "react";
 import TaskAction from "./TaskAction";
 import TaskSearch from "./TaskSearch";
 import TaskTable from "./TaskTable";
 
 export default function TaskBoard() {
+
+  const defaulttask={
+    "id":crypto.randomUUID(),
+    "title":"Learn React",
+    "description":"Implement a Python solution to synchronize data between an API and a third-party database securely optimizing data exchange",
+    "tags":["web","api","react"],
+    "priority":"High",
+    "isfav":true,
+  }
+  const [tasks,setTasks]=useState([defaulttask])
+
   return (
     <section
       className="mb-20 text-white max-w-7xl rounded-md mx-auto"
@@ -14,7 +26,7 @@ export default function TaskBoard() {
             {/* Task action button */}
           <TaskAction />
           {/* Task table */}
-          <TaskTable />
+          <TaskTable tasks={tasks} />
         </div>
       </div>
     </section>
